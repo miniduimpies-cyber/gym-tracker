@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a0a"><meta name="description" content="An offline-first gym workout tracker.">
+  <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icons/icon.svg">
+  <title>Gym Tracker</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="app">
+  <header class="header"><div><h1>💪 Gym Tracker</h1><p id="connection" class="subtle">Ready when you are</p></div><div class="streak">🔥 <span id="streakCount">0</span> day streak</div></header>
+  <section class="content">
+    <section id="today" class="tab active">
+      <div class="hero"><h2 id="todayTitle">Today's workout</h2><p id="todayDate"></p><div class="progress"><span id="progressBar"></span></div><p id="progressText" class="subtle">0 of 0 exercises complete</p></div>
+      <div id="exerciseList"></div>
+      <button id="finishWorkout" class="primary wide">Finish workout</button>
+    </section>
+    <section id="plan" class="tab"><div class="section-head"><div><h2>Workout plan</h2><p class="subtle">Choose a day to use it today.</p></div><button id="resetPlan" class="ghost">Reset plan</button></div><div id="planList"></div></section>
+    <section id="records" class="tab"><h2>Personal records</h2><p class="subtle">Best logged weight and estimated one-rep max.</p><div id="recordList"></div></section>
+    <section id="calendar" class="tab"><div class="calendar-header"><button id="prevMonth" class="icon-btn" aria-label="Previous month">‹</button><h2 id="monthLabel"></h2><button id="nextMonth" class="icon-btn" aria-label="Next month">›</button></div><div class="weekday-row"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div id="calendarGrid" class="calendar-grid"></div><div id="dayDetail" class="detail-card">Select a completed day to see its workout.</div></section>
+    <section id="stats" class="tab"><h2>Progress</h2><div class="stats-grid"><div class="stat-card"><strong id="totalWorkouts">0</strong><span>Workouts</span></div><div class="stat-card"><strong id="longestStreak">0</strong><span>Best streak</span></div><div class="stat-card"><strong id="volumeTotal">0</strong><span>Total volume (kg)</span></div><div class="stat-card"><strong id="prTotal">0</strong><span>PR exercises</span></div></div><div class="chart-card"><label for="chartExercise">Weight progression</label><select id="chartExercise"></select><canvas id="progressChart" height="220"></canvas><p id="chartEmpty" class="subtle">Log this exercise twice to see its progression.</p></div><button id="exportData" class="ghost wide">Export my data</button></section>
+  </section>
+  <nav class="nav" aria-label="Main navigation"><button class="nav-btn active" data-tab="today">☀️<span>Today</span></button><button class="nav-btn" data-tab="plan">📋<span>Plan</span></button><button class="nav-btn" data-tab="records">🏆<span>Records</span></button><button class="nav-btn" data-tab="calendar">📅<span>Calendar</span></button><button class="nav-btn" data-tab="stats">📈<span>Stats</span></button></nav>
+</main>
+<dialog id="timerDialog"><form method="dialog" class="modal-card"><button class="close" value="cancel" aria-label="Close">×</button><p class="eyebrow">REST TIMER</p><div id="timerDisplay">01:30</div><p id="timerStatus" class="subtle">Rest, then get after it.</p><div class="timer-controls"><button id="addTimer" type="button" class="ghost">+30 sec</button><button id="stopTimer" type="button" class="ghost">Stop</button></div></form></dialog>
+<div id="toast" class="toast" role="status"></div><script src="app.js"></script>
+</body></html>
